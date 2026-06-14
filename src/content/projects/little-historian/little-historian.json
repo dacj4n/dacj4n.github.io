@@ -7,6 +7,6 @@
     "status": "in-progress",
     "sourceUrl": "https://github.com/dacj4n/little-historian",
     "startDate": "2026-05",
-    "featured": true,
+    "featured": false,
     "tags": ["教育", "历史", "App", "TypeScript"]
 }

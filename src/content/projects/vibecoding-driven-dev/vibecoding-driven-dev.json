@@ -7,6 +7,6 @@
     "status": "in-progress",
     "sourceUrl": "https://github.com/dacj4n/vibecoding-driven-dev",
     "startDate": "2026-05",
-    "featured": true,
+    "featured": false,
     "tags": ["AI", "工作流", "方法论", "TDD"]
 }
