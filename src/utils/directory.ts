@@ -70,7 +70,7 @@ export async function getDirectoryTree(): Promise<DirectoryNode[]> {
         const basePathParts = project.basePath?.split('/') || [];
         if (basePathParts[0] === 'content') basePathParts.shift();
         if (basePathParts[0] === 'projects') basePathParts[0] = rootMap.projects;
-        addNode(basePathParts, project.title || project.id, `/projects/`);
+        addNode(basePathParts, project.title || project.id, `/projects/${project.id}/`);
     }
 
     for (const skill of skillsData) {

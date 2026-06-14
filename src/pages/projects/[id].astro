@@ -1,0 +1,112 @@
+---
+import { LinkPresets } from "@constants/link-presets";
+import { LinkPreset } from "@/types/config";
+import { projectsData } from "@/utils/projects";
+import { i18n } from "@i18n/translation";
+import I18nKey from "@i18n/i18nKey";
+import GridLayout from "@layouts/grid.astro";
+import BackwardButton from "@components/backwardButton.astro";
+import ImageWrapper from "@components/common/imageWrapper.astro";
+
+
+export function getStaticPaths() {
+    return projectsData.map(p => ({
+        params: { id: p.id },
+        props: { project: p },
+    }));
+}
+
+const { project } = Astro.props;
+const pageTitle = project.title || project.id;
+const pageDescription = LinkPresets[LinkPreset.Projects]?.description || "";
+---
+
+<GridLayout title={pageTitle} description={pageDescription}>
+    <div class="flex w-full rounded-(--radius-large) overflow-hidden relative min-h-32">
+        <div class="card-base z-10 px-4 py-4 md:px-6 md:py-5 relative w-full">
+            <BackwardButton currentPath={Astro.url.pathname} />
+            <div class="relative max-w-4xl">
+                <div class="project-detail card-base p-4 md:p-6 lg:p-8">
+                    <!-- 项目截图 -->
+                    {project.image && (
+                        <div class="mb-6">
+                            <ImageWrapper
+                                src={project.image}
+                                basePath={project.basePath}
+                                alt={project.title}
+                                class="w-full max-h-[400px] object-cover rounded-lg"
+                            />
+                        </div>
+                    )}
+                    <!-- 标题 -->
+                    <h1 class="text-2xl md:text-3xl font-bold text-90 mb-4">{project.title}</h1>
+                    <!-- 描述 -->
+                    <p class="text-base md:text-lg text-90 leading-relaxed mb-6">{project.description}</p>
+                    <!-- 状态和分类 -->
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class={`px-3 py-1 rounded-full text-sm font-medium ${
+                            project.status === 'completed' ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300' :
+                            project.status === 'in-progress' ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300' :
+                            'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300'
+                        }`}>
+                            {project.status === 'completed' ? '已完成' :
+                             project.status === 'in-progress' ? '进行中' : '规划中'}
+                        </span>
+                        <span class="px-3 py-1 rounded-full text-sm bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300">
+                            {project.category}
+                        </span>
+                    </div>
+                    <!-- 技术栈 -->
+                    {project.techStack && project.techStack.length > 0 && (
+                        <div class="mb-6">
+                            <h3 class="text-sm font-semibold text-50 mb-2">技术栈</h3>
+                            <div class="flex flex-wrap gap-2">
+                                {project.techStack.map(tech => (
+                                    <span class="px-3 py-1 rounded-md text-sm bg-(--btn-regular-bg) text-90">{tech}</span>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+                    <!-- 标签 -->
+                    {project.tags && project.tags.length > 0 && (
+                        <div class="mb-6">
+                            <div class="flex flex-wrap gap-2">
+                                {project.tags.map(tag => (
+                                    <span class="px-2 py-0.5 rounded text-xs bg-(--btn-regular-bg) text-75">{tag}</span>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+                    <!-- 链接 -->
+                    <div class="flex flex-wrap gap-3 mb-6">
+                        {project.sourceUrl && (
+                            <a href={project.sourceUrl} target="_blank" rel="noopener noreferrer"
+                               class="px-4 py-2 rounded-lg bg-(--primary) text-white text-sm font-medium hover:opacity-90 transition">
+                                源代码
+                            </a>
+                        )}
+                        {project.demoUrl && (
+                            <a href={project.demoUrl} target="_blank" rel="noopener noreferrer"
+                               class="px-4 py-2 rounded-lg border border-(--primary) text-(--primary) text-sm font-medium hover:bg-(--primary) hover:text-white transition">
+                                在线演示
+                            </a>
+                        )}
+                    </div>
+                    <!-- 日期 -->
+                    <div class="text-sm text-50">
+                        {project.startDate && <span>开始: {project.startDate}</span>}
+                        {project.endDate && <span class="ml-4">结束: {project.endDate}</span>}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</GridLayout>
+
+<style>
+    .card-base {
+        background: var(--card-bg);
+        border: 1px solid var(--line-divider);
+        transition: all 0.3s ease;
+    }
+</style>
