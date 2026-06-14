@@ -116,16 +116,6 @@ const getSizeClasses = (size: string) => {
 const sizeClasses = getSizeClasses(size);
 const skillColor = skill.color || "#3B82F6";
 
-// 技能描述 i18n 映射
-const skillDescMap: Record<string, I18nKey> = {
-    "Astro": I18nKey.skillAstroDesc,
-    "Svelte": I18nKey.skillSvelteDesc,
-    "Git": I18nKey.skillGitDesc,
-    "Tailwind CSS": I18nKey.skillTailwindDesc,
-};
-const getSkillDescription = (name: string, fallback: string) =>
-    skillDescMap[name] ? i18n(skillDescMap[name]) : fallback;
-
 // 经验展示文本
 const getExperienceText = (experience: Props["skill"]["experience"]) => {
     if (typeof experience === "string") return experience;
@@ -173,7 +163,7 @@ const getExperienceText = (experience: Props["skill"]["experience"]) => {
                 )}
                 <!-- 技能描述 -->
                 <p class={`text-black/60 dark:text-white/60 mb-3 ${sizeClasses.description}`}>
-                    {getSkillDescription(skill.name, skill.description)}
+                    {skill.description}
                 </p>
                 <!-- 经验和进度条 -->
                 {showProgress && (

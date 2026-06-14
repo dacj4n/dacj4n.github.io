@@ -124,10 +124,6 @@ export const ja: Translation = {
     [Key.skillsDistribution]: "スキル分布",
     [Key.skillsByLevel]: "レベル別分布",
     [Key.skillsByCategory]: "カテゴリ別分布",
-    [Key.skillAstroDesc]: "マルチフレームワーク統合をサポートする最新の静的サイトジェネレーター。",
-    [Key.skillSvelteDesc]: "コンパイラベースの軽量UIフレームワーク。",
-    [Key.skillGitDesc]: "分散型バージョン管理システム。",
-    [Key.skillTailwindDesc]: "ユーティリティファーストのCSSフレームワーク。",
 
     // タイムラインページ
     [Key.timeline]: "タイムライン",
