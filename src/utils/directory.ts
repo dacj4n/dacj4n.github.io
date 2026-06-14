@@ -56,10 +56,14 @@ export async function getDirectoryTree(): Promise<DirectoryNode[]> {
     }
 
     for (const moment of sortedMoments) {
-        const basePathParts = moment.basePath?.split('/') || [];
-        if (basePathParts[0] === 'content') basePathParts.shift();
-        if (basePathParts[0] === 'diary') basePathParts[0] = rootMap.diary;
-        addNode(basePathParts, moment.title || moment.id, `/diary/`);
+        const d = new Date(moment.date);
+        const year = String(d.getFullYear());
+        const month = `${String(d.getMonth() + 1).padStart(2, '0')}月`;
+        addNode(
+            [rootMap.diary, year, month],
+            moment.title || moment.content.substring(0, 30),
+            `/diary/`,
+        );
     }
 
     for (const project of projectsData) {

@@ -27,3 +27,34 @@ export const moments: Moment[] = Object.entries(diaryModules).map(([path, mod]: 
 export const sortedMoments = [...moments].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
 );
+
+export interface MonthGroup {
+    month: number;
+    moments: Moment[];
+}
+
+export interface YearGroup {
+    year: number;
+    months: MonthGroup[];
+}
+
+export const groupedMoments: YearGroup[] = (() => {
+    const map = new Map<number, Map<number, Moment[]>>();
+    for (const m of sortedMoments) {
+        const d = new Date(m.date);
+        const y = d.getFullYear();
+        const mo = d.getMonth() + 1;
+        if (!map.has(y)) map.set(y, new Map());
+        const yearMap = map.get(y)!;
+        if (!yearMap.has(mo)) yearMap.set(mo, []);
+        yearMap.get(mo)!.push(m);
+    }
+    return Array.from(map.entries())
+        .sort(([a], [b]) => b - a)
+        .map(([year, monthMap]) => ({
+            year,
+            months: Array.from(monthMap.entries())
+                .sort(([a], [b]) => b - a)
+                .map(([month, moments]) => ({ month, moments })),
+        }));
+})();
