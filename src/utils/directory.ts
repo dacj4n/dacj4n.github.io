@@ -62,7 +62,7 @@ export async function getDirectoryTree(): Promise<DirectoryNode[]> {
         addNode(
             [rootMap.diary, year, month],
             moment.title || moment.content.substring(0, 30),
-            `/diary/`,
+            `/diary/${moment.id}/`,
         );
     }
 

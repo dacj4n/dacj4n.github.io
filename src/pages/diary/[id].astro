@@ -1,0 +1,59 @@
+---
+import { LinkPresets } from "@constants/link-presets";
+import { LinkPreset } from "@/types/config";
+import { moments } from "@/utils/diary";
+import { i18n } from "@i18n/translation";
+import I18nKey from "@i18n/i18nKey";
+import GridLayout from "@layouts/grid.astro";
+import BackwardButton from "@components/backwardButton.astro";
+import ImageWrapper from "@components/common/imageWrapper.astro";
+
+
+export function getStaticPaths() {
+    return moments.map(m => ({
+        params: { id: m.id },
+        props: { moment: m },
+    }));
+}
+
+const { moment } = Astro.props;
+const pageTitle = moment.title || moment.id;
+const pageDescription = LinkPresets[LinkPreset.Diary].description;
+---
+
+<GridLayout title={pageTitle} description={pageDescription}>
+    <div class="flex w-full rounded-(--radius-large) overflow-hidden relative min-h-32">
+        <div class="card-base z-10 px-4 py-4 md:px-6 md:py-5 relative w-full">
+            <BackwardButton currentPath={Astro.url.pathname} />
+            <div class="relative max-w-4xl">
+                <div class="moment-detail card-base p-4 md:p-6 lg:p-8">
+                    <p class="moment-text text-sm md:text-base lg:text-lg text-90 leading-relaxed mb-4">{moment.content}</p>
+                    {moment.images && moment.images.length > 0 && (
+                        <div class="moment-images flex flex-wrap gap-2 md:gap-3 mb-4">
+                            {moment.images.map((image) => (
+                                <ImageWrapper
+                                    src={image}
+                                    basePath={moment.basePath}
+                                    alt={i18n(I18nKey.diaryImage)}
+                                    class="w-auto h-auto max-h-[300px] md:max-h-[400px] object-contain rounded-md"
+                                />
+                            ))}
+                        </div>
+                    )}
+                    <div class="moment-footer flex items-center gap-2 text-75 text-sm">
+                        <span>{moment.date}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</GridLayout>
+
+<style>
+    .card-base {
+        background: var(--card-bg);
+        border: 1px solid var(--line-divider);
+        transition: all 0.3s ease;
+    }
+    .moment-text { white-space: pre-line; }
+</style>
