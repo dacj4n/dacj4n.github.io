@@ -131,7 +131,7 @@ site:
             # 是否启用加载标题
             enable: true
             # 加载标题文本
-            content: "LOADING"
+            content: "加载中"
             # 动画周期 (s)
             interval: 1.5
         # 加载动画配置
@@ -174,13 +174,13 @@ navbar:
             "Archive"
         - # 一级导航链接 - 展览 (自定义)
             # 导航名称
-            name: "Exhibition"
+            name: "展览"
             # 导航链接
             url: "/exhibition/"
             # 导航图标
             icon: "material-symbols:person"
             # 导航描述
-            description: "A collection of my creative works and experiences"
+            description: "我的创作作品和经验集合"
             # 子链接
             children:
                 - # 二级导航链接 - 项目 (预设)
@@ -456,20 +456,20 @@ pio:
     # 对话框配置
     dialog:
         # 欢迎词
-        welcome: "Welcome!"
+        welcome: "欢迎！"
         # 触摸提示
         touch:
-            - "What are you doing?"
-            - "Stop touching me!"
-            - "Don't bully me like that!"
+            - "你在做什么？"
+            - "别碰我！"
+            - "不要欺负我！"
             - "(｡í _ ì｡)"
         # 首页提示
-        home: "Click here to go back to homepage!"
+        home: "点击这里回到首页！"
         # 换装提示
         skin:
-            - "Want to see my new outfit?"
-            - "The new outfit looks great~"
+            - "想看看我的新衣服吗？"
+            - "新衣服看起来不错~"
         # 关闭提示
-        close: "See you next time~"
+        close: "下次再见~"
         # 关于链接
         link: "https://nav.kungal.org"

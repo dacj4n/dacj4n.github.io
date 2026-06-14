@@ -796,11 +796,11 @@ onDestroy(() => {
                  onscroll={handleLrcScroll}>
                 {#if noLyrics}
                     <div class="h-full flex items-center justify-center text-sm text-30">
-                        暂无歌词
+                        {i18n(Key.musicLyricsEmpty)}
                     </div>
                 {:else if lyrics.length === 0}
                      <div class="h-full flex items-center justify-center text-sm text-30">
-                        加载歌词中...
+                        {i18n(Key.musicLyricsLoading)}
                     </div>
                 {:else}
                     <div class="py-8">

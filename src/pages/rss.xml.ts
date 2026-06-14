@@ -10,6 +10,8 @@ import { siteConfig } from "@/config";
 import { getSortedPosts } from "@utils/post";
 import { getCategoryPathLabel } from "@utils/category";
 import { parseTags } from "@utils/tag";
+import { i18n } from "@i18n/translation";
+import I18nKey from "@i18n/i18nKey";
 import { getFileDirFromPath, getPostUrl } from "@utils/url";
 
 
@@ -107,7 +109,7 @@ export async function GET(context: APIContext) {
 
     return rss({
         title: siteConfig.title,
-        description: siteConfig.subtitle || "No description",
+        description: siteConfig.subtitle || i18n(I18nKey.noDescription),
         site: context.site,
         items: feed,
         customData: `<language>${siteConfig.lang}</language>`,

@@ -111,15 +111,15 @@ const recentPosts = posts.slice(0, 6);
                     if (!url) return;
                     try {
                         await navigator.clipboard.writeText(url);
-                        const originalText = this.textContent || "Copy Link";
-                        this.textContent = "Link Copied";
+                        const originalText = this.textContent || "{i18n(I18nKey.atomCopyLink)}";
+                        this.textContent = "{i18n(I18nKey.atomCopied)}";
                         setTimeout(() => {
                             this.textContent = originalText;
                         }, 2000);
                     } catch (err) {
                         console.error('复制失败:', err);
-                        const originalText = this.textContent || "Copy Link";
-                        this.textContent = "Copy Failed";
+                        const originalText = this.textContent || "{i18n(I18nKey.atomCopyLink)}";
+                        this.textContent = "{i18n(I18nKey.atomCopyFailed)}";
                         setTimeout(() => {
                             this.textContent = originalText;
                         }, 2000);

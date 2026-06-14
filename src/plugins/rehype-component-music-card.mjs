@@ -23,8 +23,8 @@ export function MusicCardComponent(properties, children) {
         return "/" + path;
     };
 
-    const title = properties.title || (properties.meting ? "Loading..." : "Unknown Title");
-    const artist = properties.artist || (properties.meting ? "Loading..." : "Unknown Artist");
+    const title = properties.title || (properties.meting ? "加载中..." : "未知标题");
+    const artist = properties.artist || (properties.meting ? "加载中..." : "未知艺术家");
     const audioSrc = resolvePath(properties.audio);
     const coverSrc = resolvePath(properties.cover);
     const lrcSrc = resolvePath(properties.lrc);
@@ -60,10 +60,10 @@ export function MusicCardComponent(properties, children) {
     // Use grid layout for overlapping lyrics to support the transition effect
     const nLyric = h("div", { class: "music-lyric", id: `${cardUuid}-lyric`, style: "display: grid; place-items: center;" }, [
         h("div", { class: "lyric-exit", style: "grid-area: 1/1; opacity: 0; pointer-events: none;" }, ""),
-        h("div", { class: "lyric-current", style: "grid-area: 1/1;" }, "Loading lyrics...")
+        h("div", { class: "lyric-current", style: "grid-area: 1/1;" }, "加载歌词中...")
     ]);
 
-    const nPlayBtn = h("button", { class: "play-btn", id: `${cardUuid}-play`, "aria-label": "Play/Pause" }, [
+    const nPlayBtn = h("button", { class: "play-btn", id: `${cardUuid}-play`, "aria-label": "播放/暂停" }, [
         // Play Icon (SVG)
         h("svg", { viewBox: "0 0 24 24", class: "play-icon" }, [
             h("path", { d: "M8 5v14l11-7z" })
@@ -298,7 +298,7 @@ export function MusicCardComponent(properties, children) {
                     }
                 } catch (e) {
                     console.error('Meting fetch error:', e);
-                    currentLyricEl.innerText = "Error loading music data";
+                    currentLyricEl.innerText = "音乐数据加载失败";
                 }
             } else {
                 // Load initial lyrics if not using Meting (or Meting url empty)

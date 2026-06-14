@@ -272,4 +272,38 @@ export const en: Translation = {
     [Key.musicCollapse]: "Collapse player",
     [Key.musicVolume]: "Volume",
     [Key.musicExpand]: "Expand music player",
+    [Key.musicRefresh]: "Refresh",
+    [Key.musicRepeatOne]: "Repeat One",
+    [Key.musicShuffle]: "Shuffle",
+    [Key.musicRepeatAll]: "Repeat All",
+    [Key.musicLyricsLoading]: "Loading lyrics...",
+    [Key.musicLyricsEmpty]: "No lyrics",
+    [Key.musicPlayPause]: "Play/Pause",
+    [Key.musicLoading]: "Loading...",
+    [Key.musicErrorLoading]: "Error loading music data",
+
+    // Nav Link Descriptions
+    [Key.homeDesc]: "A simple, clean, and beautiful blog theme",
+    [Key.archiveDesc]: "A chronological list of all published posts",
+    [Key.animeDesc]: "A list of anime I have watched",
+    [Key.friendsDesc]: "A curated list of friend sites",
+
+    // Footer
+    [Key.allRightsReserved]: "All Rights Reserved",
+
+    // Pagination
+    [Key.previousPage]: "Previous Page",
+    [Key.nextPage]: "Next Page",
+
+    // Statistics
+    [Key.activities]: "Activities",
+
+    // Language
+    [Key.selectLanguage]: "Select Language",
+
+    // General
+    [Key.unknown]: "Unknown",
+    [Key.unknownTitle]: "Unknown Title",
+    [Key.episodes]: "episodes",
+    [Key.noDescription]: "No description",
 };

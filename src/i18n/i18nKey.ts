@@ -269,6 +269,40 @@ enum I18nKey {
     musicCollapse = "musicCollapse",
     musicVolume = "musicVolume",
     musicExpand = "musicExpand",
+    musicRefresh = "musicRefresh",
+    musicRepeatOne = "musicRepeatOne",
+    musicShuffle = "musicShuffle",
+    musicRepeatAll = "musicRepeatAll",
+    musicLyricsLoading = "musicLyricsLoading",
+    musicLyricsEmpty = "musicLyricsEmpty",
+    musicPlayPause = "musicPlayPause",
+    musicLoading = "musicLoading",
+    musicErrorLoading = "musicErrorLoading",
+
+    // 导航链接描述
+    homeDesc = "homeDesc",
+    archiveDesc = "archiveDesc",
+    animeDesc = "animeDesc",
+    friendsDesc = "friendsDesc",
+
+    // 页脚
+    allRightsReserved = "allRightsReserved",
+
+    // 分页
+    previousPage = "previousPage",
+    nextPage = "nextPage",
+
+    // 统计
+    activities = "activities",
+
+    // 语言
+    selectLanguage = "selectLanguage",
+
+    // 通用
+    unknown = "unknown",
+    unknownTitle = "unknownTitle",
+    episodes = "episodes",
+    noDescription = "noDescription",
 }
 
 export default I18nKey;

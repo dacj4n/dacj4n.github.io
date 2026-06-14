@@ -272,4 +272,38 @@ export const zh: Translation = {
     [Key.musicCollapse]: "折叠播放器",
     [Key.musicVolume]: "音量控制",
     [Key.musicExpand]: "展开音乐播放器",
+    [Key.musicRefresh]: "刷新",
+    [Key.musicRepeatOne]: "单曲循环",
+    [Key.musicShuffle]: "随机播放",
+    [Key.musicRepeatAll]: "列表循环",
+    [Key.musicLyricsLoading]: "加载歌词中...",
+    [Key.musicLyricsEmpty]: "暂无歌词",
+    [Key.musicPlayPause]: "播放/暂停",
+    [Key.musicLoading]: "加载中...",
+    [Key.musicErrorLoading]: "音乐数据加载失败",
+
+    // 导航链接描述
+    [Key.homeDesc]: "简洁、美观的博客主题",
+    [Key.archiveDesc]: "所有已发布文章的时间列表",
+    [Key.animeDesc]: "我观看过的番剧列表",
+    [Key.friendsDesc]: "友情链接列表",
+
+    // 页脚
+    [Key.allRightsReserved]: "版权所有",
+
+    // 分页
+    [Key.previousPage]: "上一页",
+    [Key.nextPage]: "下一页",
+
+    // 统计
+    [Key.activities]: "动态",
+
+    // 语言
+    [Key.selectLanguage]: "选择语言",
+
+    // 通用
+    [Key.unknown]: "未知",
+    [Key.unknownTitle]: "未知标题",
+    [Key.episodes]: "集",
+    [Key.noDescription]: "暂无描述",
 };

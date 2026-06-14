@@ -9,6 +9,8 @@ import { getSortedPosts } from "@utils/post";
 import { getCategoryPathParts } from "@utils/category";
 import { parseTags } from "@utils/tag";
 import { getFileDirFromPath, getPostUrl } from "@utils/url";
+import { i18n } from "@i18n/translation";
+import I18nKey from "@i18n/i18nKey";
 
 
 const markdownParser = new MarkdownIt();
@@ -44,7 +46,7 @@ export async function GET(context: APIContext) {
     let atomFeed = `<?xml version="1.0" encoding="utf-8"?>
         <feed xmlns="http://www.w3.org/2005/Atom">
         <title>${escapeXml(siteConfig.title)}</title>
-        <subtitle>${escapeXml(siteConfig.subtitle || "No description")}</subtitle>
+        <subtitle>${escapeXml(siteConfig.subtitle || i18n(I18nKey.noDescription))}</subtitle>
         <link href="${escapeXml(context.site.href)}" rel="alternate" type="text/html"/>
         <link href="${escapeXml(new URL("atom.xml", context.site).href)}" rel="self" type="application/atom+xml"/>
         <id>${escapeXml(context.site.href)}</id>

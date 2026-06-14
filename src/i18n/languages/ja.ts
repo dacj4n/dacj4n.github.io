@@ -272,4 +272,38 @@ export const ja: Translation = {
     [Key.musicCollapse]: "プレイヤーを閉じる",
     [Key.musicVolume]: "音量調節",
     [Key.musicExpand]: "音楽プレイヤーを展開",
+    [Key.musicRefresh]: "リフレッシュ",
+    [Key.musicRepeatOne]: "一曲リピート",
+    [Key.musicShuffle]: "シャッフル",
+    [Key.musicRepeatAll]: "全曲リピート",
+    [Key.musicLyricsLoading]: "歌詞を読み込み中...",
+    [Key.musicLyricsEmpty]: "歌詞なし",
+    [Key.musicPlayPause]: "再生/一時停止",
+    [Key.musicLoading]: "読み込み中...",
+    [Key.musicErrorLoading]: "音楽データの読み込みに失敗しました",
+
+    // ナビゲーションリンク説明
+    [Key.homeDesc]: "シンプルでクリーンな美しいブログテーマ",
+    [Key.archiveDesc]: "すべての公開記事の時系列リスト",
+    [Key.animeDesc]: "視聴したアニメのリスト",
+    [Key.friendsDesc]: "友達サイトのリスト",
+
+    // フッター
+    [Key.allRightsReserved]: "全著作権所有",
+
+    // ページネーション
+    [Key.previousPage]: "前のページ",
+    [Key.nextPage]: "次のページ",
+
+    // 統計
+    [Key.activities]: "アクティビティ",
+
+    // 言語
+    [Key.selectLanguage]: "言語を選択",
+
+    // 一般
+    [Key.unknown]: "不明",
+    [Key.unknownTitle]: "不明なタイトル",
+    [Key.episodes]: "話",
+    [Key.noDescription]: "説明なし",
 };

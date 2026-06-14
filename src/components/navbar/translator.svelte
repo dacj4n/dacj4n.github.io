@@ -6,6 +6,8 @@ import { getTranslateLanguageFromConfig, getSiteLanguage, setStoredLanguage, get
 import { onClickOutside } from "@utils/widget";
 import { siteConfig } from "@/config";
 import { getSupportedTranslateLanguages } from "@/i18n/language";
+import { i18n } from "@i18n/translation";
+import I18nKey from "@i18n/i18nKey";
 import DropdownItem from "@/components/common/DropdownItem.svelte";
 import DropdownPanel from "@/components/common/DropdownPanel.svelte";
 import Icon from "@components/common/icon.svelte";
@@ -107,7 +109,7 @@ onDestroy(() => {
             class="p-4 w-full"
         >
             <div class="text-sm font-medium text-(--primary) mb-3 px-1">
-                选择语言 / Select Language
+                {i18n(I18nKey.selectLanguage)}
             </div>
             <div class="grid grid-cols-1 gap-2 max-h-64 overflow-y-auto">
                 {#each languages as lang}

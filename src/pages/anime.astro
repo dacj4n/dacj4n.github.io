@@ -92,14 +92,14 @@ async function processBangumiData(data: any, status: string) {
             // 获取相关人员信息
             const subjectPersons = await fetchSubjectPersons(item.subject_id);
             // 获取年份信息
-            const year = item.subject?.date || "Unknown";
+            const year = item.subject?.date || i18n(I18nKey.unknown);
             // 获取评分
             const rating = item.rate ? Number.parseFloat(item.rate.toFixed(1)) : 0;
             // 获取进度信息
             const progress = item.ep_status || 0;
             const totalEpisodes = item.subject?.eps || progress;
             // 从相关人员中获取制作方信息
-            let studio = "Unknown";
+            let studio = i18n(I18nKey.unknown);
             if (Array.isArray(subjectPersons)) {
                 // 定义筛选优先级顺序
                 const priorities = ["动画制作", "製作", "制作"];
@@ -115,7 +115,7 @@ async function processBangumiData(data: any, status: string) {
             }
 
             return {
-                title: item.subject?.name_cn || item.subject?.name || "Unknown Title",
+                title: item.subject?.name_cn || item.subject?.name || i18n(I18nKey.unknownTitle),
                 status: status,
                 rating: rating,
                 cover: item.subject?.images?.medium || "/assets/anime/default.webp",
@@ -124,11 +124,11 @@ async function processBangumiData(data: any, status: string) {
                     item.subject?.name_cn ||
                     ""
                 ).trimStart(),
-                episodes: `${totalEpisodes} episodes`,
+                episodes: `${totalEpisodes} ${i18n(I18nKey.episodes)}`,
                 year: year,
                 genre: item.subject?.tags
                     ? item.subject.tags.slice(0, 3).map((tag: any) => tag.name)
-                    : ["Unknown"],
+                    : [i18n(I18nKey.unknown)],
                 studio: studio,
                 link: `https://bgm.tv/subject/${item.subject.id}` || "#",
                 progress: progress,
@@ -265,7 +265,7 @@ const stats = {
                             {i18n(I18nKey.animeEmpty)}
                         </h3>
                         <p class="text-black/60 dark:text-white/60">
-                            Please configure your Bangumi account in the config file.
+                            {i18n(I18nKey.animeEmptyBangumi)}
                         </p>
                     </div>
                 ) : animeList.length > 0 ? (

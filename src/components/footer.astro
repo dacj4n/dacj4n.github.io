@@ -4,6 +4,8 @@ import * as path from "node:path";
 
 import { footerConfig, profileConfig } from "@/config";
 import { url } from "@utils/url";
+import { i18n } from "@i18n/translation";
+import I18nKey from "@i18n/i18nKey";
 
 
 const currentYear = new Date().getFullYear();
@@ -38,7 +40,7 @@ if (footerConfig.enable) {
         {customFooterHtml && (
             <div class="mb-2" set:html={customFooterHtml}></div>
         )}
-        &copy; <span id="copyright-year">{currentYear}</span> {profileConfig.name}. All Rights Reserved. /
+        &copy; <span id="copyright-year">{currentYear}</span> {profileConfig.name}. {i18n(I18nKey.allRightsReserved)}. /
         <a class="transition link text-(--primary) font-medium" href={url('rss/')} onclick={`event.preventDefault(); navigateToPage('${url('rss/')}')`}>RSS</a> /
         <a class="transition link text-(--primary) font-medium" href={url('atom/')} onclick={`event.preventDefault(); navigateToPage('${url('atom/')}')`}>Atom</a> /
         <a class="transition link text-(--primary) font-medium" target="_blank" href={url('sitemap-index.xml')}>Sitemap</a><br>
