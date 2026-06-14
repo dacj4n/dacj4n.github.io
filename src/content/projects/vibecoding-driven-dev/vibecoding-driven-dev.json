@@ -1,0 +1,12 @@
+{
+    "title": "vibecoding-driven-dev",
+    "description": "将 TDD、BDD、DDD、SDD 四大方法论融合为结构化 AI 开发工作流，让「氛围编程」升级为「工程驱动」。",
+    "image": "",
+    "category": "library",
+    "techStack": ["Claude Code", "AI"],
+    "status": "in-progress",
+    "sourceUrl": "https://github.com/dacj4n/vibecoding-driven-dev",
+    "startDate": "2026-05",
+    "featured": true,
+    "tags": ["AI", "工作流", "方法论", "TDD"]
+}

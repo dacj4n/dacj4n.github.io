@@ -1,0 +1,12 @@
+{
+    "title": "dotfiles",
+    "description": "个人 macOS 终端配置方案：Zsh + Neovim (LazyVim) + WezTerm + Starship，支持一键部署。",
+    "image": "",
+    "category": "software",
+    "techStack": ["Lua", "Shell"],
+    "status": "completed",
+    "sourceUrl": "https://github.com/dacj4n/dotfiles",
+    "startDate": "2026-05",
+    "featured": false,
+    "tags": ["配置", "Neovim", "Zsh", "macOS"]
+}

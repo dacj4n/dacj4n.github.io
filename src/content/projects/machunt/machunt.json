@@ -1,0 +1,12 @@
+{
+    "title": "MacHunt",
+    "description": "命令行 Mac 搜索工具，快速轻量高效。基于 Rust 构建，支持全文索引与即时搜索。",
+    "image": "./screenshot.png",
+    "category": "software",
+    "techStack": ["Rust", "TypeScript", "CSS"],
+    "status": "in-progress",
+    "sourceUrl": "https://github.com/dacj4n/MacHunt",
+    "startDate": "2026-03",
+    "featured": true,
+    "tags": ["CLI", "搜索", "Rust"]
+}

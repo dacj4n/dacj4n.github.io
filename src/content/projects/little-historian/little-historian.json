@@ -1,0 +1,12 @@
+{
+    "title": "Little Historian",
+    "description": "为小学生打造的「中华上下五千年」趣味学习 App，通过故事、冒险与互动，轻松走进中国历史。",
+    "image": "",
+    "category": "software",
+    "techStack": ["TypeScript", "Java", "Rust"],
+    "status": "in-progress",
+    "sourceUrl": "https://github.com/dacj4n/little-historian",
+    "startDate": "2026-05",
+    "featured": true,
+    "tags": ["教育", "历史", "App", "TypeScript"]
+}
