@@ -421,11 +421,16 @@ const setup = () => {
         }, 300)
     });
     window.swup.hooks.on('page:view', () => {
-        // Scroll to top of the page after page transition
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+        // Delay scrollTo to after height-extend is hidden (300ms timeout in visit:end),
+        // otherwise the geometry change interrupts the smooth scroll animation when
+        // the user was scrolled far down, which can break the Swup transition and
+        // trigger a full page reload.
+        setTimeout(() => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth',
+            });
+        }, 350);
         // Check if the current page is a post page, if so, trigger a custom event to initialize the comment system
         setTimeout(() => {
             if (document.getElementById('tcomment')) {

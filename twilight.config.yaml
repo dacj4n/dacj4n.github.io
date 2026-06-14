@@ -255,15 +255,6 @@ sidebar:
                     mode: "exclude"
                     # 页面路径匹配规则列表 (支持正则字符串)
                     paths: ["^/posts/", "^/archive"]
-            - # 组件 - 日记时间轴
-                # 类型
-                type: "diaryTimeline"
-                # 位置策略 ("top" 顶部固定 | "sticky" 粘性)
-                position: "sticky"
-                # 页面可见性配置
-                visibility:
-                    mode: "include"
-                    paths: ["^/diary$"]
             - # 组件 - 文章目录 (预设)
                 # 类型
                 type: "toc"
