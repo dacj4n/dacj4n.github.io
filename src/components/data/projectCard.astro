@@ -94,7 +94,9 @@ const getSizeClasses = (size: string) => {
 const sizeClasses = getSizeClasses(size);
 ---
 
-<div class="bg-white dark:bg-gray-800 rounded-lg border border-black/10 dark:border-white/10 overflow-hidden hover:shadow-lg transition-all duration-300 group">
+<div class="relative bg-white dark:bg-gray-800 rounded-lg border border-black/10 dark:border-white/10 overflow-hidden hover:shadow-lg transition-all duration-300 group">
+    <a href={`/projects/${project.id}/`} class="absolute inset-0 z-10" aria-label={project.title}>
+    </a>
     <!-- 项目图片 -->
     {showImage && project.image && (
         <div class={`overflow-hidden ${size === 'large' ? 'aspect-video' : 'aspect-4/3'}`}>
@@ -155,7 +157,7 @@ const sizeClasses = getSizeClasses(size);
             </div>
         )}
         <!-- 链接 -->
-        <div class="flex gap-3">
+        <div class="flex gap-3 relative z-20">
             {project.demoUrl && (
                 <a
                     href={project.demoUrl}
