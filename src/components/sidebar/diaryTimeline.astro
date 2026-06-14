@@ -1,0 +1,21 @@
+---
+import { groupedMoments } from "@utils/diary";
+import WidgetLayout from "./widgetLayout.astro";
+import DiaryTimeline from "./diaryTimeline.svelte";
+
+interface Props {
+    class?: string;
+    style?: string;
+    side?: string;
+}
+const { class: className, style, side = "default" } = Astro.props;
+---
+
+<WidgetLayout
+    name="时间轴"
+    id={`diary-timeline-${side}`}
+    class={className}
+    style={style}
+>
+    <DiaryTimeline client:load groupedMoments={groupedMoments} />
+</WidgetLayout>

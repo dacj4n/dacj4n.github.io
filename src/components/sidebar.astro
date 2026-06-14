@@ -9,6 +9,7 @@ import Categories from "@components/sidebar/categories.astro";
 import Tags from "@components/sidebar/tags.astro";
 import Statistics from "@components/sidebar/statistics.astro";
 import TOC from "@components/sidebar/toc.astro";
+import DiaryTimeline from "@components/sidebar/diaryTimeline.astro";
 
 
 interface Props {
@@ -58,6 +59,7 @@ const componentMap = {
     tags: Tags,
     statistics: Statistics,
     toc: TOC,
+    diaryTimeline: DiaryTimeline,
 };
 
 // 渲染组件的辅助函数

@@ -2,7 +2,7 @@
 import { LinkPresets } from "@constants/link-presets";
 import { LinkPreset } from "@/types/config";
 import { siteConfig } from "@/config";
-import { sortedMoments } from "@/utils/diary";
+import { sortedMoments, groupedMoments } from "@/utils/diary";
 import { i18n } from "@i18n/translation";
 import I18nKey from "@i18n/i18nKey";
 import GridLayout from "@layouts/grid.astro";
@@ -56,43 +56,57 @@ function formatTime(dateString: string): string {
                         </div>
                     </div>
                 </div>
-                <!-- 短文列表 -->
+                <!-- 短文列表（按年月分组） -->
                 <div class="moments-timeline">
-                    <div class="timeline-list space-y-4">
-                    {sortedMoments.map(moment => (
-                        <div class="moment-item card-base p-4 md:p-6 lg:p-8 hover:shadow-lg transition-all">
-                                <div class="moment-content">
-                                    {moment.title && (
-                                        <h2 class="moment-title text-base md:text-lg lg:text-xl font-bold text-90 mb-2">{moment.title}</h2>
-                                    )}
-                                    <p class="moment-text text-sm md:text-base lg:text-lg text-90 leading-relaxed mb-3 md:mb-4">{moment.content}</p>
-                                    {moment.images && moment.images.length > 0 && (
-                                        <div class="moment-images flex flex-wrap gap-2 md:gap-3 lg:gap-4 mb-3 md:mb-4">
-                                            {moment.images.map((image, index) => (
-                                                <div class="image-item relative rounded-md overflow-hidden cursor-pointer hover:scale-105 transition max-w-full">
-                                                    <ImageWrapper
-                                                        src={image}
-                                                        basePath={moment.basePath}
-                                                        alt={i18n(I18nKey.diaryImage)}
-                                                        class="w-auto h-auto max-h-[300px] md:max-h-[400px] object-contain rounded-md"
-                                                    />
+                    {groupedMoments.map(yearGroup => (
+                        <div class="year-section mb-6">
+                            <h2 id={`diary-y-${yearGroup.year}`} class="text-lg md:text-xl font-bold text-90 mb-3 sticky top-[calc(var(--navbar-height)+var(--main-content-top))] bg-(--card-bg) py-2 z-10">
+                                {yearGroup.year} 年
+                            </h2>
+                            {yearGroup.months.map(monthGroup => (
+                                <div class="month-section mb-4 ml-2">
+                                    <h3 id={`diary-m-${yearGroup.year}-${String(monthGroup.month).padStart(2, '0')}`} class="text-base md:text-lg font-semibold text-75 mb-2 pl-2 border-l-2 border-(--primary)">
+                                        {String(monthGroup.month).padStart(2, '0')}月
+                                    </h3>
+                                    <div class="timeline-list space-y-3">
+                                    {monthGroup.moments.map(moment => (
+                                        <a href={`/diary/${moment.id}/`} class="moment-item card-base p-3 md:p-5 lg:p-6 hover:shadow-lg transition-all block no-underline">
+                                            <div class="moment-content">
+                                                {moment.title && (
+                                                    <h3 class="moment-title text-sm md:text-base font-bold text-90 mb-1">{moment.title}</h3>
+                                                )}
+                                                <p class="moment-text text-xs md:text-sm text-90 leading-relaxed mb-2 md:mb-3">{moment.content}</p>
+                                                {moment.images && moment.images.length > 0 && (
+                                                    <div class="moment-images flex flex-wrap gap-1 md:gap-2 mb-2 md:mb-3">
+                                                        {moment.images.map((image) => (
+                                                            <div class="image-item relative rounded-md overflow-hidden cursor-pointer hover:scale-105 transition max-w-full">
+                                                                <ImageWrapper
+                                                                    src={image}
+                                                                    basePath={moment.basePath}
+                                                                    alt={i18n(I18nKey.diaryImage)}
+                                                                    class="w-auto h-auto max-h-[200px] md:max-h-[300px] object-contain rounded-md"
+                                                                />
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                )}
+                                            </div>
+                                            <hr class="moment-divider border-t border-(--line-divider) my-2 md:my-3" />
+                                            <div class="moment-footer flex justify-between items-center">
+                                                <div class="moment-time flex items-center gap-1 text-75 text-xs">
+                                                    <i class="time-icon text-xs">🕐</i>
+                                                    <time datetime={moment.date}>
+                                                        {formatTime(moment.date)}
+                                                    </time>
                                                 </div>
-                                            ))}
-                                        </div>
-                                    )}
-                                </div>
-                                <hr class="moment-divider border-t border-(--line-divider) my-3 md:my-4" />
-                                <div class="moment-footer flex justify-between items-center">
-                                    <div class="moment-time flex items-center gap-1.5 text-75 text-xs md:text-sm lg:text-base">
-                                        <i class="time-icon text-xs md:text-sm">🕐</i>
-                                        <time datetime={moment.date}>
-                                            {formatTime(moment.date)}
-                                        </time>
+                                            </div>
+                                        </a>
+                                    ))}
                                     </div>
                                 </div>
-                            </div>
-                        ))}
-                    </div>
+                            ))}
+                        </div>
+                    ))}
                 </div>
                 <!-- 底部提示 -->
                 <div class="moments-tips text-center mt-6 md:mt-8 lg:mt-10 text-75 text-xs md:text-sm lg:text-base italic">
