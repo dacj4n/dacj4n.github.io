@@ -4,7 +4,7 @@
     "image": "",
     "category": "software",
     "techStack": ["Go"],
-    "status": "in-progress",
+    "status": "completed",
     "sourceUrl": "https://github.com/dacj4n/go-icmpshell-Ex",
     "startDate": "2026-02",
     "featured": false,

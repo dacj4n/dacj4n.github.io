@@ -1,0 +1,15 @@
+{
+    "title": "envSwitch",
+    "description": "原生开发环境版本管理器。一键切换 Java、Go、Node、PHP、Python、MySQL、PostgreSQL 等版本。基于 Rust 构建，快速轻量。",
+    "type": "project",
+    "startDate": "2026-05",
+    "skills": ["Rust", "TypeScript", "CSS"],
+    "featured": true,
+    "links": [
+        {
+            "name": "GitHub",
+            "url": "https://github.com/dacj4n/envSwitch",
+            "type": "project"
+        }
+    ]
+}

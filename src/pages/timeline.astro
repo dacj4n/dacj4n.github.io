@@ -22,19 +22,6 @@ import BackwardButton from "@components/backwardButton.astro";
 const title = LinkPresets[LinkPreset.Timeline].name;
 const subtitle = LinkPresets[LinkPreset.Timeline].description;
 
-// 收集所有时间线图标用于预加载
-const allIcons = timelineData
-    .map((item) => item.icon || getTypeIcon(item.type))
-    .filter(Boolean);
-
-// 获取时间线统计信息
-const stats = getTimelineStats();
-const currentItems = getCurrentItems();
-const workExperience = getTotalWorkExperience();
-
-// 获取所有时间线项目（按时间倒序）
-const allTimelineItems = getTimelineByType();
-
 // 类型图标映射
 const getTypeIcon = (type: string) => {
     switch (type) {
@@ -50,6 +37,19 @@ const getTypeIcon = (type: string) => {
             return "material-symbols:event";
     }
 };
+
+// 收集所有时间线图标用于预加载
+const allIcons = timelineData
+    .map((item) => item.icon || getTypeIcon(item.type))
+    .filter(Boolean);
+
+// 获取时间线统计信息
+const stats = getTimelineStats();
+const currentItems = getCurrentItems();
+const workExperience = getTotalWorkExperience();
+
+// 获取所有时间线项目（按时间倒序）
+const allTimelineItems = getTimelineByType();
 ---
 
 <GridLayout title={title} description={subtitle}>

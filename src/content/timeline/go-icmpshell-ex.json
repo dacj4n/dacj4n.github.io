@@ -1,0 +1,16 @@
+{
+    "title": "go-icmpshell-Ex",
+    "description": "基于纯 Go 原生实现的 ICMP 反弹 Shell 工具，在原仓库基础上的二次开发增强版本。",
+    "type": "project",
+    "startDate": "2026-02",
+    "endDate": "2026-02",
+    "skills": ["Go"],
+    "featured": false,
+    "links": [
+        {
+            "name": "GitHub",
+            "url": "https://github.com/dacj4n/go-icmpshell-Ex",
+            "type": "project"
+        }
+    ]
+}
