@@ -403,7 +403,7 @@ musicPlayer:
     # 启用音乐播放器功能
     enable: true
     # 默认模式 ("meting" API | "local" 本地)
-    mode: "meting"
+    mode: "local"
     # meting 模式专属配置
     meting:
         # Meting API 地址
