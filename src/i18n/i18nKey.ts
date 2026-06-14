@@ -121,6 +121,10 @@ enum I18nKey {
     skillsDistribution = "skillsDistribution",
     skillsByLevel = "skillsByLevel",
     skillsByCategory = "skillsByCategory",
+    skillAstroDesc = "skillAstroDesc",
+    skillSvelteDesc = "skillSvelteDesc",
+    skillGitDesc = "skillGitDesc",
+    skillTailwindDesc = "skillTailwindDesc",
 
     // 时间线页面
     timeline = "timeline",

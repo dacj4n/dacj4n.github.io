@@ -124,6 +124,10 @@ export const zh: Translation = {
     [Key.skillsDistribution]: "技能分布",
     [Key.skillsByLevel]: "按等级分布",
     [Key.skillsByCategory]: "按分类分布",
+    [Key.skillAstroDesc]: "现代静态站点生成器，支持多框架集成。",
+    [Key.skillSvelteDesc]: "基于编译器的轻量级 UI 框架。",
+    [Key.skillGitDesc]: "分布式版本控制系统。",
+    [Key.skillTailwindDesc]: "实用优先的 CSS 框架。",
 
     // 时间线页面
     [Key.timeline]: "时间线",

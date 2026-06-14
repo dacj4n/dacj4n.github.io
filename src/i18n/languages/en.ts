@@ -124,6 +124,10 @@ export const en: Translation = {
     [Key.skillsDistribution]: "Skill Distribution",
     [Key.skillsByLevel]: "Distribution by Level",
     [Key.skillsByCategory]: "Distribution by Category",
+    [Key.skillAstroDesc]: "A modern static site generator supporting multi-framework integration.",
+    [Key.skillSvelteDesc]: "A compiler-based lightweight UI framework.",
+    [Key.skillGitDesc]: "A distributed version control system.",
+    [Key.skillTailwindDesc]: "A utility-first CSS framework.",
 
     // Timeline Page
     [Key.timeline]: "Timeline",
