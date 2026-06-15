@@ -1,7 +1,7 @@
 ---
 title: 端口敲门 (Port Knocking)
 published: 2025-06-15 09:30
-tags: 安全
+tags: [安全]
 category: 网安
 draft: false
 ---

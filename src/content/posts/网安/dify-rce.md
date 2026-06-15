@@ -1,8 +1,8 @@
 ---
 title: Dify RCE
 published: 2025-12-25 14:09
-tags: 安全
-category: 网安 / 漏洞
+tags: [安全,漏洞]
+category: 网安
 draft: false
 ---
 
