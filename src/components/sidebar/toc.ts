@@ -139,7 +139,7 @@ export class TableOfContents extends HTMLElement {
 
     scrollToActiveHeading = () => {
         if (this.anchorNavTarget || !this.tocEl) return;
-        const activeHeading = this.querySelectorAll<HTMLDivElement>(`.${this.visibleClass}`);
+        const activeHeading = this.querySelectorAll<HTMLAnchorElement>(`a.${this.visibleClass}`);
         if (!activeHeading.length) return;
 
         const topmost = activeHeading[0];
@@ -345,7 +345,9 @@ export class TableOfContents extends HTMLElement {
 
         if (!this.regenerateTOC()) return;
 
-        this.tocEl = this.querySelector('.toc-scroll-container');
+        this.tocEl = this.dataset.isFloating === "true"
+            ? this.querySelector('.toc-floating-panel')
+            : this.parentElement; // .toc-scroll-container
         this.tocEl?.addEventListener("click", this.handleAnchorClick, { capture: true });
 
         this.activeIndicator = this.querySelector(".active-indicator");
