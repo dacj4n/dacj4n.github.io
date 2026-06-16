@@ -11,14 +11,19 @@ import { Icon } from "astro-icon/components";
 
 
 export function getStaticPaths() {
-    return sortedMoments.map((m, i) => ({
-        params: { id: m.id },
-        props: {
-            moment: m,
-            prevMoment: i < sortedMoments.length - 1 ? sortedMoments[i + 1] : null,
-            nextMoment: i > 0 ? sortedMoments[i - 1] : null,
-        },
-    }));
+    return sortedMoments.map((m, i) => {
+        const d = new Date(m.date);
+        const year = d.getFullYear().toString();
+        const month = (d.getMonth() + 1).toString().padStart(2, '0');
+        return {
+            params: { year, month, id: m.id },
+            props: {
+                moment: m,
+                prevMoment: i < sortedMoments.length - 1 ? sortedMoments[i + 1] : null,
+                nextMoment: i > 0 ? sortedMoments[i - 1] : null,
+            },
+        };
+    });
 }
 
 const { moment, prevMoment, nextMoment } = Astro.props;
@@ -38,6 +43,13 @@ function formatDateTime(dateString: string): string {
     const h = d.getHours().toString().padStart(2, '0');
     const min = d.getMinutes().toString().padStart(2, '0');
     return `${y}年${mo}月${day}日 ${h}:${min}`;
+}
+
+function diaryUrl(m: typeof moment): string {
+    const d = new Date(m.date);
+    const year = d.getFullYear();
+    const month = (d.getMonth() + 1).toString().padStart(2, '0');
+    return `/diary/${year}/${month}/${m.id}/`;
 }
 
 const pageDescription = LinkPresets[LinkPreset.Diary].description;
@@ -71,7 +83,7 @@ const pageDescription = LinkPresets[LinkPreset.Diary].description;
             <!-- 上一篇 / 下一篇导航 -->
             <div class="flex flex-col md:flex-row justify-between mt-4 gap-4 overflow-hidden w-full">
                 <a
-                    href={nextMoment ? `/diary/${nextMoment.id}/` : "#"}
+                    href={nextMoment ? diaryUrl(nextMoment) : "#"}
                     class:list={[
                         "w-full font-bold overflow-hidden active:scale-95",
                         { "pointer-events-none opacity-0": !nextMoment },
@@ -87,7 +99,7 @@ const pageDescription = LinkPresets[LinkPreset.Diary].description;
                     )}
                 </a>
                 <a
-                    href={prevMoment ? `/diary/${prevMoment.id}/` : "#"}
+                    href={prevMoment ? diaryUrl(prevMoment) : "#"}
                     class:list={[
                         "w-full font-bold overflow-hidden active:scale-95",
                         { "pointer-events-none opacity-0": !prevMoment },

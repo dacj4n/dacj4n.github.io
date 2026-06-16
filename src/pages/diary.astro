@@ -35,9 +35,16 @@ function formatTime(dateString: string): string {
     return `${days}${i18n(I18nKey.diaryDaysAgo)}`;
 }
 
+function diaryUrl(moment: { id: string; date: string }): string {
+    const d = new Date(moment.date);
+    const year = d.getFullYear();
+    const month = (d.getMonth() + 1).toString().padStart(2, '0');
+    return `/diary/${year}/${month}/${moment.id}/`;
+}
+
 function formatDateTime(dateString: string): string {
     const d = new Date(dateString);
-    return `${d.getMonth() + 1}月${d.getDate()}日 ${d.getHours().toString().padStart(2, '0')}:${d.getMinutes().toString().padStart(2, '0')}`;
+    return `${d.getMonth() + 1}/${d.getDate()} ${d.getHours().toString().padStart(2, '0')}:${d.getMinutes().toString().padStart(2, '0')}`;
 }
 ---
 
@@ -71,11 +78,11 @@ function formatDateTime(dateString: string): string {
                             {yearGroup.months.map(monthGroup => (
                                 <div class="month-section mb-4 ml-2">
                                     <h3 id={`diary-m-${yearGroup.year}-${String(monthGroup.month).padStart(2, '0')}`} class="text-base md:text-lg font-semibold text-75 mb-2 pl-2 border-l-2 border-(--primary)">
-                                        {String(monthGroup.month).padStart(2, '0')}月
+                                        {String(monthGroup.month).padStart(2, '0')}
                                     </h3>
                                     <div class="timeline-list space-y-3">
                                     {monthGroup.moments.map(moment => (
-                                        <a href={`/diary/${moment.id}/`} class="moment-item card-base p-3 md:p-5 lg:p-6 hover:shadow-lg transition-all block no-underline">
+                                        <a href={diaryUrl(moment)} class="moment-item card-base p-3 md:p-5 lg:p-6 hover:shadow-lg transition-all block no-underline">
                                             <div class="moment-content">
                                                 {moment.title && (
                                                     <h3 class="moment-title text-sm md:text-base font-bold text-90 mb-1">{moment.title}</h3>

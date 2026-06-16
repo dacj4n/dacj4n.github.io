@@ -58,11 +58,11 @@ export async function getDirectoryTree(): Promise<DirectoryNode[]> {
     for (const moment of sortedMoments) {
         const d = new Date(moment.date);
         const year = String(d.getFullYear());
-        const month = `${String(d.getMonth() + 1).padStart(2, '0')}月`;
+        const month = String(d.getMonth() + 1).padStart(2, '0');
         addNode(
             [rootMap.diary, year, month],
             moment.title || moment.content.substring(0, 30),
-            `/diary/${moment.id}/`,
+            `/diary/${year}/${month}/${moment.id}/`,
         );
     }
 
