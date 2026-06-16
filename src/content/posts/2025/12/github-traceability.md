@@ -1,7 +1,7 @@
 ---
 title: GitHub 的正反向溯源方式
 published: 2025-12-15 11:10
-tags: [安全, GitHub, 溯源]
+tags: [GitHub, 溯源]
 category: 工具
 draft: false
 ---

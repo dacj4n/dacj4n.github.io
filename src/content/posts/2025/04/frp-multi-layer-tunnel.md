@@ -1,7 +1,7 @@
 ---
 title: Frp搭建多层内网通信隧道
 published: 2025-04-16 09:39
-tags: [安全, 内网穿透, FRP, 隧道]
+tags: [FRP, 内网穿透]
 category: 内网
 draft: false
 ---

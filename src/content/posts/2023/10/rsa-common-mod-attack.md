@@ -1,7 +1,7 @@
 ---
 title: RSA共模攻击
 published: 2023-10-09 10:03
-tags: [安全, RSA, 密码学, CTF, 共模攻击]
+tags: [CTF, RSA, 密码学]
 category: CTF
 draft: false
 ---

@@ -1,7 +1,7 @@
 ---
 title: Linux提权
 published: 2023-03-25 13:43
-tags: [安全, Linux, 提权]
+tags: [Linux, 提权]
 category: 系统
 draft: false
 ---

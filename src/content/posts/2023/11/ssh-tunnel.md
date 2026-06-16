@@ -1,7 +1,7 @@
 ---
 title: SSH 隧道/端口转发
 published: 2023-11-24 14:00
-tags: [安全, SSH, 端口转发, 内网穿透]
+tags: [SSH, 内网穿透]
 category: 内网
 draft: false
 ---

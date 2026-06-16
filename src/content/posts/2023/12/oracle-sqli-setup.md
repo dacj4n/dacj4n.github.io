@@ -1,7 +1,7 @@
 ---
 title: Oracle数据库SQL注入环境搭建
 published: 2023-12-12 17:49
-tags: [安全, Oracle, SQL注入]
+tags: [SQL注入, 数据库]
 category: Web
 draft: false
 ---

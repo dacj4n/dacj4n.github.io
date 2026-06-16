@@ -1,7 +1,7 @@
 ---
 title: K8s 攻击方式
 published: 2023-06-24 17:04
-tags: [安全, K8s, 容器]
+tags: [K8s, 容器]
 category: 系统
 draft: false
 ---

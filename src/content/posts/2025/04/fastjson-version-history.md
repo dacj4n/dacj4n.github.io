@@ -1,7 +1,7 @@
 ---
 title: Java中Fastjson各版本漏洞对抗史与总结
 published: 2025-04-15 16:30
-tags: [安全, Fastjson, Java, 反序列化, 版本对抗]
+tags: [Fastjson, Java, 免杀, 反序列化]
 category: Web
 draft: false
 ---

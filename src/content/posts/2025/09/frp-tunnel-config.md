@@ -1,7 +1,7 @@
 ---
 title: FRP 隧道配置参考
 published: 2025-09-11 17:55
-tags: [安全, 内网穿透, FRP]
+tags: [FRP, 内网穿透]
 category: 内网
 draft: false
 ---

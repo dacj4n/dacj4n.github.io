@@ -1,7 +1,7 @@
 ---
 title: CTF中常见PHP特性学习笔记
 published: 2021-04-15 17:07
-tags: [安全, CTF, PHP, 代码审计]
+tags: [CTF, PHP, 代码审计]
 category: CTF
 draft: false
 ---

@@ -1,7 +1,7 @@
 ---
 title: 反弹Shell
 published: 2023-04-15 10:35
-tags: [安全, Shell]
+tags: [Linux]
 category: 内网
 draft: false
 ---

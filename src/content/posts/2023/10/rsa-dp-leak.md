@@ -1,7 +1,7 @@
 ---
 title: RSA-dp泄露
 published: 2023-10-08 10:38
-tags: [安全, RSA, 密码学, CTF, dp泄露]
+tags: [CTF, RSA, 密码学]
 category: CTF
 draft: false
 ---

@@ -1,7 +1,7 @@
 ---
 title: PWN入门——栈溢出
 published: 2024-12-27 10:57
-tags: [安全, PWN, 栈溢出, ROP, CTF]
+tags: [CTF, PWN]
 category: CTF
 draft: false
 ---

@@ -1,7 +1,7 @@
 ---
 title: Linux命令-nc（端口监控、文件传输、反弹shell等）
 published: 2023-05-20 16:21
-tags: [安全, Linux, nc]
+tags: [Linux]
 category: 工具
 draft: false
 ---

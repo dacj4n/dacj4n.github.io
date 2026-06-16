@@ -1,7 +1,7 @@
 ---
 title: MySQL 开启远程访问
 published: 2026-05-19 10:02
-tags: [数据库, MySQL]
+tags: [数据库]
 category: 工具
 draft: false
 ---

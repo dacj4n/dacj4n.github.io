@@ -1,7 +1,7 @@
 ---
 title: RSA低加密指数攻击
 published: 2023-09-08 09:28
-tags: [安全, RSA, 密码学, CTF, 低加密指数]
+tags: [CTF, RSA, 密码学]
 category: CTF
 draft: false
 ---

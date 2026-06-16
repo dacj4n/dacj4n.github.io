@@ -1,7 +1,7 @@
 ---
 title: Linux 本地提权工具集
 published: 2026-06-15 13:37
-tags: [安全, Linux, 提权, CVE]
+tags: [Linux, 提权, 漏洞]
 category: 系统
 draft: false
 ---

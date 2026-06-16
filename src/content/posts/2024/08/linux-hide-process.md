@@ -1,7 +1,7 @@
 ---
 title: Linux 隐藏进程
 published: 2024-08-13 20:19
-tags: [安全, Linux, 进程隐藏]
+tags: [Linux, 进程隐藏]
 category: 系统
 draft: false
 ---

@@ -1,7 +1,7 @@
 ---
 title: Cheat Engine 教程（1-9通关）x64
 published: 2023-04-11 10:28
-tags: [安全, Cheat Engine, 逆向]
+tags: [逆向]
 category: CTF
 draft: false
 ---

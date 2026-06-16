@@ -1,7 +1,7 @@
 ---
 title: GCC编译针对Linux保护机制
 published: 2025-04-11 11:01
-tags: [安全, GCC, Linux, 编译, 漏洞缓解]
+tags: [Linux, 编译]
 category: 系统
 draft: false
 ---

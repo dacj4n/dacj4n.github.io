@@ -1,7 +1,7 @@
 ---
 title: PostgreSQL 数据库管理
 published: 2024-08-12 17:23
-tags: [安全, PostgreSQL]
+tags: [数据库]
 category: 工具
 draft: false
 ---

@@ -1,7 +1,7 @@
 ---
 title: 简单的一次手机APK注入
 published: 2023-08-23 17:33
-tags: [安全, Android, APK, MSF, 注入]
+tags: [Android, MSF, SQL注入]
 category: 工具
 draft: false
 ---

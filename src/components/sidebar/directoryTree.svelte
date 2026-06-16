@@ -31,7 +31,6 @@
     function resetAndExpand() {
         expandedFolders = {};
         currentPath = getCurrentPath();
-        autoExpand(tree, "");
     }
 
     function autoExpand(nodes: DirectoryNode[], parentPath: string): boolean {

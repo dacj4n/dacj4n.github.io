@@ -1,7 +1,7 @@
 ---
 title: FreeCMS 商业版 2.x 任意文件读取与文件包含漏洞
 published: 2025-09-24 15:48
-tags: [安全, 漏洞, FreeCMS]
+tags: [FreeCMS, 漏洞]
 category: Web
 draft: false
 ---

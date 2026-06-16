@@ -1,7 +1,7 @@
 ---
 title: Dify RCE
 published: 2025-12-25 14:09
-tags: [安全,漏洞]
+tags: [漏洞]
 category: Web
 draft: false
 ---

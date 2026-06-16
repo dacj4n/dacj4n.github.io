@@ -1,7 +1,7 @@
 ---
 title: 日志信息分析示例
 published: 2023-08-25 21:24
-tags: [安全]
+tags: [日志分析]
 category: 工具
 draft: false
 ---

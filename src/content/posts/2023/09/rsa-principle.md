@@ -1,7 +1,7 @@
 ---
 title: RSA原理
 published: 2023-09-03 02:58
-tags: [安全, RSA, 密码学, 非对称加密]
+tags: [RSA, 密码学]
 category: CTF
 draft: false
 ---

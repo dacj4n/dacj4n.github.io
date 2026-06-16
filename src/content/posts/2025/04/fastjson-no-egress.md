@@ -1,7 +1,7 @@
 ---
 title: Fastjson不出网利用总结
 published: 2025-04-15 16:30
-tags: [安全, Fastjson, Java, 反序列化, 不出网]
+tags: [Fastjson, Java, 内网穿透, 反序列化]
 category: Web
 draft: false
 ---

@@ -1,7 +1,7 @@
 ---
 title: upload-labs 通关攻略
 published: 2021-04-15 10:35
-tags: [安全, 文件上传, upload-labs]
+tags: [文件上传]
 category: CTF
 draft: false
 ---

@@ -1,7 +1,7 @@
 ---
 title: easyusb
 published: 2023-09-23 00:43
-tags: [安全, USB, 流量分析, CTF]
+tags: [CTF, USB, 流量分析]
 category: CTF
 draft: false
 ---

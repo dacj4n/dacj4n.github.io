@@ -1,7 +1,7 @@
 ---
 title: SQLServer数据库注入详解
 published: 2023-08-28 14:53
-tags: [安全, SQLServer, SQL注入]
+tags: [SQL注入, 数据库]
 category: Web
 draft: false
 ---

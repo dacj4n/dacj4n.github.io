@@ -1,7 +1,7 @@
 ---
 title: Fastjson Payload
 published: 2025-04-15 17:09
-tags: [安全, Fastjson, JNDI, 反序列化, Payload]
+tags: [Fastjson, JNDI, Payload, 反序列化]
 category: Web
 draft: false
 ---

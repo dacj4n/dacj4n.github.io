@@ -1,7 +1,7 @@
 ---
 title: C/C++ 通过中转函数实现DLL劫持
 published: 2025-04-15 17:08
-tags: [安全, DLL劫持, C++, 中转函数]
+tags: [C++, DLL劫持, 免杀]
 category: 系统
 draft: false
 ---
