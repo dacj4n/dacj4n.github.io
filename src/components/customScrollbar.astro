@@ -1,0 +1,146 @@
+---
+// 自定义浮层滚动条，fixed 定位叠加在页面右侧，不影响布局
+---
+
+<div id="custom-scrollbar" class="custom-scrollbar" aria-hidden="true">
+    <div id="custom-scrollbar-thumb" class="custom-scrollbar-thumb"></div>
+</div>
+
+<script>
+    function initCustomScrollbar() {
+        const scrollbar = document.getElementById('custom-scrollbar');
+        const thumb = document.getElementById('custom-scrollbar-thumb');
+        if (!scrollbar || !thumb) return;
+
+        if ((scrollbar as any)._initialized) return;
+        (scrollbar as any)._initialized = true;
+
+        let hideTimeout: ReturnType<typeof setTimeout>;
+        let isDragging = false;
+        let dragStartY = 0;
+        let dragStartScroll = 0;
+
+        function updateThumb() {
+            const scrollHeight = document.documentElement.scrollHeight;
+            const viewHeight = window.innerHeight;
+            const scrollable = scrollHeight - viewHeight;
+            const ratio = scrollable > 0 ? window.scrollY / scrollable : 0;
+
+            const trackH = scrollbar!.clientHeight;
+            const thumbH = Math.max(trackH * (viewHeight / scrollHeight), 36);
+            const travel = trackH - thumbH;
+
+            thumb!.style.height = thumbH + 'px';
+            thumb!.style.transform = `translateY(${travel * ratio}px)`;
+        }
+
+        function show() {
+            scrollbar!.classList.add('visible');
+            updateThumb();
+            clearTimeout(hideTimeout);
+            hideTimeout = setTimeout(() => {
+                if (!isDragging) scrollbar!.classList.remove('visible');
+            }, 3000);
+        }
+
+        window.addEventListener('scroll', show, { passive: true });
+        window.addEventListener('resize', updateThumb);
+
+        // 鼠标聚焦时保持显示
+        scrollbar.addEventListener('mouseenter', () => {
+            clearTimeout(hideTimeout);
+            scrollbar!.classList.add('visible');
+        });
+        scrollbar.addEventListener('mouseleave', () => {
+            hideTimeout = setTimeout(() => {
+                if (!isDragging) scrollbar!.classList.remove('visible');
+            }, 3000);
+        });
+
+        // 拖拽滚动
+        thumb.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            dragStartY = e.clientY;
+            dragStartScroll = window.scrollY;
+            scrollbar!.classList.add('visible', 'dragging');
+            document.addEventListener('mousemove', onDrag);
+            document.addEventListener('mouseup', onDragEnd);
+            e.preventDefault();
+        });
+
+        function onDrag(e: MouseEvent) {
+            const dy = e.clientY - dragStartY;
+            const scrollH = document.documentElement.scrollHeight - window.innerHeight;
+            const trackH = scrollbar!.clientHeight;
+            const thumbH = thumb!.clientHeight;
+            const travel = trackH - thumbH;
+            if (travel <= 0) return;
+            window.scrollTo(0, dragStartScroll + (dy / travel) * scrollH);
+        }
+
+        function onDragEnd() {
+            isDragging = false;
+            scrollbar!.classList.remove('dragging');
+            document.removeEventListener('mousemove', onDrag);
+            document.removeEventListener('mouseup', onDragEnd);
+            hideTimeout = setTimeout(() => scrollbar!.classList.remove('visible'), 3000);
+        }
+
+        // 点击轨道跳转
+        scrollbar.addEventListener('click', (e) => {
+            if (e.target === thumb) return;
+            const ratio = e.offsetY / scrollbar!.clientHeight;
+            window.scrollTo(0, (document.documentElement.scrollHeight - window.innerHeight) * ratio);
+        });
+
+        updateThumb();
+    }
+
+    if (window.swup) {
+        window.swup.hooks.on('content:replace', () => {
+            const el = document.getElementById('custom-scrollbar');
+            if (el) (el as any)._initialized = false;
+            setTimeout(initCustomScrollbar, 50);
+        });
+    }
+
+    initCustomScrollbar();
+</script>
+
+<style is:global>
+    .custom-scrollbar {
+        position: fixed;
+        right: 2px;
+        top: 0;
+        width: 10px;
+        height: 100%;
+        z-index: 9999;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .custom-scrollbar.visible {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .custom-scrollbar-thumb {
+        position: absolute;
+        right: 1px;
+        top: 0;
+        width: 6px;
+        min-height: 36px;
+        border-radius: 3px;
+        background: var(--scrollbar-bg);
+        transition: background 0.15s ease, width 0.15s ease;
+        will-change: transform;
+        cursor: pointer;
+    }
+
+    .custom-scrollbar:hover .custom-scrollbar-thumb,
+    .custom-scrollbar.dragging .custom-scrollbar-thumb {
+        background: var(--scrollbar-bg-hover);
+        width: 8px;
+    }
+</style>

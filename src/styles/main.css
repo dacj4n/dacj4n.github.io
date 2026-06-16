@@ -600,16 +600,16 @@
 }
 
 @layer utilities {
-    /* 隐藏原生滚动条 */
+    /* 隐藏原生滚动条（由自定义浮层滚动条替代） */
     html,
     body {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none;
+        -ms-overflow-style: none;
     }
 
     html::-webkit-scrollbar,
     body::-webkit-scrollbar {
-    display: none; /* Chrome, Safari and Opera */
+        display: none;
     }
 
     /* 页面顶部渐变高光效果 */
