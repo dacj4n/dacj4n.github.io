@@ -291,6 +291,12 @@ profile:
             icon: "fa6-brands:github"
             # 链接
             url: "https://github.com/dacj4n"
+        - name: "Bilibili"
+          icon: "ri:bilibili-line"
+          url: "https://space.bilibili.com/19944045"
+        - name: "邮箱"
+          icon: "material-symbols:mail"
+          url: "mailto:q1303571728@163.com"
 
 # 公告配置
 announcement:
