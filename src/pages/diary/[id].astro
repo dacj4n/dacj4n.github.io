@@ -1,23 +1,45 @@
 ---
 import { LinkPresets } from "@constants/link-presets";
 import { LinkPreset } from "@/types/config";
-import { moments } from "@/utils/diary";
+import { moments, sortedMoments } from "@/utils/diary";
 import { i18n } from "@i18n/translation";
 import I18nKey from "@i18n/i18nKey";
 import GridLayout from "@layouts/grid.astro";
 import BackwardButton from "@components/backwardButton.astro";
 import ImageWrapper from "@components/common/imageWrapper.astro";
+import { Icon } from "astro-icon/components";
 
 
 export function getStaticPaths() {
-    return moments.map(m => ({
+    return sortedMoments.map((m, i) => ({
         params: { id: m.id },
-        props: { moment: m },
+        props: {
+            moment: m,
+            prevMoment: i < sortedMoments.length - 1 ? sortedMoments[i + 1] : null,
+            nextMoment: i > 0 ? sortedMoments[i - 1] : null,
+        },
     }));
 }
 
-const { moment } = Astro.props;
+const { moment, prevMoment, nextMoment } = Astro.props;
 const pageTitle = moment.title || moment.id;
+
+function getMomentLabel(m: typeof moment) {
+    if (m.title) return m.title;
+    const text = m.content.replace(/\s+/g, ' ').trim();
+    return text.length > 30 ? text.slice(0, 30) + '…' : text;
+}
+
+function formatDateTime(dateString: string): string {
+    const d = new Date(dateString);
+    const y = d.getFullYear();
+    const mo = d.getMonth() + 1;
+    const day = d.getDate();
+    const h = d.getHours().toString().padStart(2, '0');
+    const min = d.getMinutes().toString().padStart(2, '0');
+    return `${y}年${mo}月${day}日 ${h}:${min}`;
+}
+
 const pageDescription = LinkPresets[LinkPreset.Diary].description;
 ---
 
@@ -41,9 +63,45 @@ const pageDescription = LinkPresets[LinkPreset.Diary].description;
                         </div>
                     )}
                     <div class="moment-footer flex items-center gap-2 text-75 text-sm">
-                        <span>{moment.date}</span>
+                        <span>{formatDateTime(moment.date)}</span>
                     </div>
                 </div>
+            </div>
+
+            <!-- 上一篇 / 下一篇导航 -->
+            <div class="flex flex-col md:flex-row justify-between mt-4 gap-4 overflow-hidden w-full">
+                <a
+                    href={nextMoment ? `/diary/${nextMoment.id}/` : "#"}
+                    class:list={[
+                        "w-full font-bold overflow-hidden active:scale-95",
+                        { "pointer-events-none opacity-0": !nextMoment },
+                    ]}
+                >
+                    {nextMoment && (
+                        <div class="btn-card rounded-2xl w-full h-15 max-w-full px-4 flex items-center justify-start! gap-4">
+                            <Icon name="material-symbols:chevron-left-rounded" class="text-[2rem] text-(--primary)" />
+                            <div class="overflow-hidden transition text-ellipsis whitespace-nowrap max-w-[calc(100%-3rem)] text-black/75 dark:text-white/75">
+                                {getMomentLabel(nextMoment)}
+                            </div>
+                        </div>
+                    )}
+                </a>
+                <a
+                    href={prevMoment ? `/diary/${prevMoment.id}/` : "#"}
+                    class:list={[
+                        "w-full font-bold overflow-hidden active:scale-95",
+                        { "pointer-events-none opacity-0": !prevMoment },
+                    ]}
+                >
+                    {prevMoment && (
+                        <div class="btn-card rounded-2xl w-full h-15 max-w-full px-4 flex items-center justify-end! gap-4">
+                            <div class="overflow-hidden transition text-ellipsis whitespace-nowrap max-w-[calc(100%-3rem)] text-black/75 dark:text-white/75">
+                                {getMomentLabel(prevMoment)}
+                            </div>
+                            <Icon name="material-symbols:chevron-right-rounded" class="text-[2rem] text-(--primary)" />
+                        </div>
+                    )}
+                </a>
             </div>
         </div>
     </div>

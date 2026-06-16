@@ -34,6 +34,11 @@ function formatTime(dateString: string): string {
     const days = Math.floor(diffInMinutes / 1440);
     return `${days}${i18n(I18nKey.diaryDaysAgo)}`;
 }
+
+function formatDateTime(dateString: string): string {
+    const d = new Date(dateString);
+    return `${d.getMonth() + 1}月${d.getDate()}日 ${d.getHours().toString().padStart(2, '0')}:${d.getMinutes().toString().padStart(2, '0')}`;
+}
 ---
 
 <GridLayout title={pageTitle} description={pageDescription}>
@@ -93,11 +98,12 @@ function formatTime(dateString: string): string {
                                             </div>
                                             <hr class="moment-divider border-t border-(--line-divider) my-2 md:my-3" />
                                             <div class="moment-footer flex justify-between items-center">
-                                                <div class="moment-time flex items-center gap-1 text-75 text-xs">
-                                                    <i class="time-icon text-xs">🕐</i>
-                                                    <time datetime={moment.date}>
-                                                        {formatTime(moment.date)}
+                                                <div class="moment-time flex items-center gap-2 text-75 text-xs">
+                                                    <time datetime={moment.date} class="text-75 font-medium">
+                                                        {formatDateTime(moment.date)}
                                                     </time>
+                                                    <span class="text-50">·</span>
+                                                    <span>{formatTime(moment.date)}</span>
                                                 </div>
                                             </div>
                                         </a>
