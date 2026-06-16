@@ -445,7 +445,10 @@ const setup = () => {
             cleanupFancybox();
         },
         { before: true },
-    )
+    );
+    window.swup.hooks.on("content:replace", () => {
+        initFancybox();
+    });
 }
 if (window?.swup?.hooks) {
     setup()
