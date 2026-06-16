@@ -14,6 +14,7 @@ export class TableOfContents extends HTMLElement {
     activeIndicator: HTMLElement | null = null;
     _retryCount = 0;
     _backToTopObserver: MutationObserver | null = null;
+    _scrollTicking = false;
 
     _handleBtnClick = (e: Event) => {
         e.stopPropagation();
@@ -60,6 +61,58 @@ export class TableOfContents extends HTMLElement {
             activeIdx = 0;
         }
         this.markActiveHeading(activeIdx);
+    };
+
+    // 基于滚动位置直接计算所有标题的活跃状态，不依赖 IntersectionObserver 回调时序
+    refreshActiveHeadings = () => {
+        if (!this.headings.length) return;
+
+        this.active = new Array(this.headings.length).fill(false);
+
+        let firstVisible = -1;
+
+        for (let i = 0; i < this.headings.length; i++) {
+            const rect = this.headings[i].getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                this.active[i] = true;
+                if (firstVisible === -1) firstVisible = i;
+            }
+        }
+
+        // 找到最后一个已被滚过的标题（已滚出视口上方）
+        let lastAbove = -1;
+        for (let i = this.headings.length - 1; i >= 0; i--) {
+            const rect = this.headings[i].getBoundingClientRect();
+            if (rect.bottom <= 0) {
+                lastAbove = i;
+                break;
+            }
+        }
+
+        // 如果没有可见标题，以最后一个滚过视口顶部的为准
+        if (firstVisible === -1) {
+            if (lastAbove >= 0) {
+                this.active[lastAbove] = true;
+            } else {
+                this.active[0] = true;
+            }
+        }
+
+        // 如果没有标题在视口上方，说明还在页面顶部，用 fallback 兜底
+        if (!this.active.includes(true)) {
+            this.fallback();
+        }
+    };
+
+    _onScroll = () => {
+        if (this._scrollTicking) return;
+        this._scrollTicking = true;
+        requestAnimationFrame(() => {
+            this._scrollTicking = false;
+            this.refreshActiveHeadings();
+            this.toggleActiveHeading();
+            this.scrollToActiveHeading();
+        });
     };
 
     toggleActiveHeading = () => {
@@ -124,6 +177,22 @@ export class TableOfContents extends HTMLElement {
             if (entry.isIntersecting && this.anchorNavTarget == entry.target)
                 this.anchorNavTarget = null;
         });
+
+        // 确保最后一个滚过视口顶部的标题始终高亮，防止页面底部时高亮残留在中间
+        if (this.headings.length > 0) {
+            let lastPassedIdx = -1;
+            for (let i = 0; i < this.headings.length; i++) {
+                const rect = this.headings[i].getBoundingClientRect();
+                if (rect.top < window.innerHeight) {
+                    lastPassedIdx = i;
+                } else {
+                    break;
+                }
+            }
+            if (lastPassedIdx >= 0) {
+                this.active[lastPassedIdx] = true;
+            }
+        }
 
         if (!this.active.includes(true))
             this.fallback();
@@ -327,6 +396,8 @@ export class TableOfContents extends HTMLElement {
         if (this.tocEntries.length === 0) return;
 
         this.headings.forEach((heading) => this.observer.observe(heading));
+        window.removeEventListener("scroll", this._onScroll);
+        window.addEventListener("scroll", this._onScroll, { passive: true });
         this.fallback();
         this.update();
     };
@@ -394,7 +465,8 @@ export class TableOfContents extends HTMLElement {
         this.observer.disconnect();
         this._backToTopObserver?.disconnect();
         this.tocEl?.removeEventListener("click", this.handleAnchorClick);
-        
+        window.removeEventListener("scroll", this._onScroll);
+
         const btn = this.querySelector('.toc-floating-btn');
         btn?.removeEventListener('click', this._handleBtnClick);
         document.removeEventListener('click', this._handleDocClick);
