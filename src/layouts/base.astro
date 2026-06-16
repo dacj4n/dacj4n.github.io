@@ -325,6 +325,8 @@ import { setupParticleEffects } from "@/utils/particle";
 const setup = () => {
     let pausedElementIds = new Set();
     window.swup.hooks.on('content:replace', () => {
+        // 在旧内容已移除、新内容已插入但动画未开始前跳到顶部，用户感知不到滚动
+        window.scrollTo(0, 0);
         // Update main grid layout class name after page transition
         const gridClassCarrier = document.getElementById("grid-class-carrier");
         if (gridClassCarrier) {
@@ -421,16 +423,8 @@ const setup = () => {
         }, 300)
     });
     window.swup.hooks.on('page:view', () => {
-        // Delay scrollTo to after height-extend is hidden (300ms timeout in visit:end),
-        // otherwise the geometry change interrupts the smooth scroll animation when
-        // the user was scrolled far down, which can break the Swup transition and
-        // trigger a full page reload.
-        setTimeout(() => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth',
-            });
-        }, 350);
+        // 确保页面始终在顶部（content:replace 已做一次，这里兜底防止 Swup 还原滚动位置）
+        window.scrollTo(0, 0);
         // Check if the current page is a post page, if so, trigger a custom event to initialize the comment system
         setTimeout(() => {
             if (document.getElementById('tcomment')) {
