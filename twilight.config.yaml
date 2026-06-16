@@ -219,7 +219,7 @@ sidebar:
                 # 响应式配置
                 responsive:
                     # 折叠阈值
-                    collapseThreshold: 5
+                    collapseThreshold: 6
                 # 目录深度
                 depth: 3
             - # 组件 - 文章标签 (预设)
