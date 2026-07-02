@@ -97,9 +97,9 @@ sudo python3 -m pip install --upgrade pwntools
 ### pwndbg+Pwngdb
 
 ```
-这里我直接去github下载运行setup.sh会报错要求升级python3，所以直接把原来虚拟机里的打包复制过来了
+这里我直接去github下载运行setup.sh会报错要求升级python3，所以直接引用了starrysky大佬的库
 
-pwnenv.zip
+https://starrysky1004.github.io/pwnenv.zip
 ```
 
 ```bash
