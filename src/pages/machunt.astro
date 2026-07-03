@@ -1,0 +1,17 @@
+---
+import "../products/machunt/index.css";
+import App from "../products/machunt/App";
+---
+
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/machunt/favicon.png" />
+    <title>MacHunt — Like Spotlight, But Yours. Fully Local macOS Search.</title>
+    <meta name="description" content="Scan your entire filesystem into a local SQLite FTS5 index. CLI searches finish in under 5ms. No cloud, no telemetry — your data never leaves your Mac." />
+  </head>
+  <body class="antialiased" style="margin: 0; background: var(--color-surface);">
+    <App client:only="react" />
+  </body>
+</html>

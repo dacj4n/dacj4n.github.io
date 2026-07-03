@@ -2,6 +2,7 @@ import { defineConfig } from "astro/config";
 import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 import svelte, { vitePreprocess } from "@astrojs/svelte";
+import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
 import swup from "@swup/astro";
 import sitemap from "@astrojs/sitemap";
@@ -149,6 +150,7 @@ export default defineConfig({
         svelte({
             preprocess: vitePreprocess(),
         }),
+        react(),
         sitemap(),
     ],
     markdown: {
